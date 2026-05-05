@@ -33,7 +33,7 @@
 
     <script>
       const taskInput = document.querySelector('#input-box')
-      const tasksList = ['Teste 1', 'Teste 2']
+      const tasksList = []
       const ul = document.querySelector('ul')
 
       function addTask(event) {
@@ -49,11 +49,20 @@
 
       }
 
+      function deletarTask(task) {
+        // excluir o valor task de dentro do array taskslist
+        console.log(`A tarefa a ser excluída é ${task}`)
+        // chamar a funçao para atualizar linha lista
+        init()
+      }
+
       function init() {
+        const linkDeletar = document.createElement('a').textContent = 'Deletar'
         ul.innerHTML = ''
         tasksList.forEach(function(task){
           const li = document.createElement('li')
-          ul.appendChild(li).textContent = task
+          li.innerHTML = `${task} <a href="javascript:deletarTask('${task}')">Deletar</a>`
+          ul.appendChild(li)
         })
       }
 
