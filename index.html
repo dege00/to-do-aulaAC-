@@ -50,6 +50,13 @@
       }
 
       function deletarTask(task) {
+        // excluir o valor task de dentro do array taskslist
+        console.log(`A tarefa a ser excluída é ${task}`)
+        // chamar a funçao para atualizar linha lista
+        init()
+      }
+
+      function deletarTask(task) {
         const index = tasksList.indexOf(task)
         if (index > -1) {
           tasksList.splice(index, 1)
