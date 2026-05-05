@@ -2,9 +2,9 @@
 <html lang="en">
   <head>
     <title>TO-DO List</title>
-    <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="stylesheet" href="style.css" /> -->
   </head>
-  <body>
+  <body onload="init()">
     <!-- create a container for the todo list -->
     <div id="todo-container">
       <!-- todo list header -->
@@ -23,7 +23,7 @@
         />
 
         <!-- add button -->
-        <button id="input-button" onclick="addTask()">Add</button>
+        <button id="input-button" onclick="addTask(event)">Add</button>
       </div>
 
       <!-- task list -->
@@ -31,6 +31,35 @@
       <ul id="list-container"></ul>
     </div>
 
-    <script type="text/javascript" src="script.js"></script>
+    <script>
+      const taskInput = document.querySelector('#input-box')
+      const tasksList = ['Teste 1', 'Teste 2']
+      const ul = document.querySelector('ul')
+
+      function addTask(event) {
+        event.preventDefault();
+        
+        taskInputValue = taskInput.value
+        taskInput.value = ''
+        taskInput.focus()
+
+        tasksList.push(taskInputValue)
+
+        init()
+
+      }
+
+      function init() {
+        ul.innerHTML = ''
+        tasksList.forEach(function(task){
+          const li = document.createElement('li')
+          ul.appendChild(li).textContent = task
+        })
+      }
+
+
+
+    </script>
+    <!-- <script type="text/javascript" src="script.js"></script> -->
   </body>
 </html>
